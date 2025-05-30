@@ -10,7 +10,7 @@ Please rank this repo 5 starts if you like our job!
 ```hcl
 module "tags" {
   # Optionals
-  source          = "./"
+  source          = "your-module-source" # e.g., git::https://github.com/your-repo/terraform-aws-tags.git
   AWS_REGION      = "us-east-1"
   PROJECT_NAME    = "NewProjectExample"
   ENVIRONMENT     = "DEV"
@@ -25,7 +25,10 @@ module "tags" {
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.5.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 5.0 |
 
 ## Providers
 
@@ -39,6 +42,12 @@ No providers.
 ## Resources
 
 No resources.
+
+## Input Validation
+
+Please be aware that tag input variables now have validation rules:
+- `AWS_REGION`: Must be a valid AWS region code (e.g., `us-east-1`) if provided.
+- Other tag values: Must be 256 characters or less and only contain letters, numbers, spaces, and the characters: `+ - = . _ : / @`.
 
 ## Inputs
 
